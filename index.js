@@ -3,6 +3,12 @@ const path = require("path");
 
 module.exports = async (req, res) => {
   try {
+    if (req.url && req.url.startsWith("/api/")) {
+      res.statusCode = 404;
+      res.end("Not found");
+      return;
+    }
+
     const filePath = path.join(__dirname, "public", "index.html");
     const html = fs.readFileSync(filePath, "utf8");
     res.setHeader("Content-Type", "text/html; charset=utf-8");
