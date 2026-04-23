@@ -6,8 +6,10 @@ module.exports = async (req, res) => {
     const filePath = path.join(__dirname, "public", "index.html");
     const html = fs.readFileSync(filePath, "utf8");
     res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.status(200).send(html);
+    res.statusCode = 200;
+    res.end(html);
   } catch (error) {
-    res.status(500).send("Failed to load Receipts.");
+    res.statusCode = 500;
+    res.end("Failed to load Receipts.");
   }
 };
