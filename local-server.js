@@ -64,21 +64,30 @@ function serveFile(req, res, targetPath) {
   };
 
   const safePath = path.normalize(targetPath).replace(/^(\.\.[/\\])+/, "");
-  const absolutePath = path.join(root, safePath);
+  const candidates = [path.join(root, safePath), path.join(root, "public", safePath)];
 
-  fs.readFile(absolutePath, (error, data) => {
-    if (error) {
-      res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
-      res.end("Not found");
-      return;
-    }
+  const tryRead = (index) => {
+    const absolutePath = candidates[index];
+    fs.readFile(absolutePath, (error, data) => {
+      if (error) {
+        if (index + 1 < candidates.length) {
+          tryRead(index + 1);
+          return;
+        }
+        res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
+        res.end("Not found");
+        return;
+      }
 
-    const extension = path.extname(absolutePath);
-    res.writeHead(200, {
-      "Content-Type": mimeTypes[extension] || "application/octet-stream",
+      const extension = path.extname(absolutePath);
+      res.writeHead(200, {
+        "Content-Type": mimeTypes[extension] || "application/octet-stream",
+      });
+      res.end(data);
     });
-    res.end(data);
-  });
+  };
+
+  tryRead(0);
 }
 
 loadDotEnv();

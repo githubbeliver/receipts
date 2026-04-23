@@ -408,6 +408,7 @@ function renderLocalOutput() {
 }
 
 function normalizeAiPayload(payload, fallbackSignals) {
+  const fallbackExtraction = buildEvidenceExtraction(fallbackSignals, splitEvidence(evidenceInput.value.trim()));
   const signalCards = Array.isArray(payload.signalCards)
     ? payload.signalCards
         .filter((card) => card && card.title && card.body)
@@ -421,12 +422,12 @@ function normalizeAiPayload(payload, fallbackSignals) {
   const sourceEvidence =
     Array.isArray(payload.sourceEvidence) && payload.sourceEvidence.length
       ? payload.sourceEvidence.map((item) => compactWhitespace(String(item))).slice(0, 5)
-      : buildEvidenceExtraction(fallbackSignals, splitEvidence(evidenceInput.value.trim())).sourceEvidence;
+      : fallbackExtraction.sourceEvidence;
 
   const interpretedEvidence =
     Array.isArray(payload.interpretedEvidence) && payload.interpretedEvidence.length
       ? payload.interpretedEvidence.map((item) => compactWhitespace(String(item))).slice(0, 5)
-      : buildEvidenceExtraction(fallbackSignals, splitEvidence(evidenceInput.value.trim())).interpretedEvidence;
+      : fallbackExtraction.interpretedEvidence;
 
   return {
     headline: compactWhitespace(payload.headline || buildHeadline(currentTemplate, fallbackSignals)),
