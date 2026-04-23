@@ -1,0 +1,10 @@
+{
+  "name": "receipts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Receipts turns messy proof into visible credibility.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
