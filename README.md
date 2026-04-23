@@ -44,7 +44,7 @@ It is about revealing the credibility already hiding inside unfinished notes and
 2. Put your real key in `.env`:
    `OPENAI_API_KEY=your_key_here`
 3. Start the local server:
-   `node server.js`
+   `node local-server.js`
 4. Open:
    `http://localhost:3000`
 
@@ -59,4 +59,4 @@ If `OPENAI_API_KEY` is missing, the app still works in local-analysis fallback m
    `OPENAI_MODEL` (optional, defaults to `gpt-5`)
 4. Deploy.
 
-The frontend is served as static files and the AI backend runs through Vercel Functions in [`api/generate.js`](C:\project\codex challenge\api\generate.js) and [`api/health.js`](C:\project\codex challenge\api\health.js).
+The frontend is served as static files and the AI backend runs through Vercel Functions in [`api/generate.js`](C:\project\codex challenge\api\generate.js) and [`api/health.js`](C:\project\codex challenge\api\health.js). Local development uses [`local-server.js`](C:\project\codex challenge\local-server.js).

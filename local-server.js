@@ -31,19 +31,6 @@ function loadDotEnv() {
   });
 }
 
-loadDotEnv();
-
-const PORT = Number(process.env.PORT || 3000);
-const { apiKey: OPENAI_API_KEY, model: MODEL = DEFAULT_MODEL } = getOpenAiConfig();
-
-const mimeTypes = {
-  ".html": "text/html; charset=utf-8",
-  ".js": "application/javascript; charset=utf-8",
-  ".css": "text/css; charset=utf-8",
-  ".json": "application/json; charset=utf-8",
-  ".md": "text/markdown; charset=utf-8",
-};
-
 function sendJson(res, statusCode, payload) {
   res.writeHead(statusCode, {
     "Content-Type": "application/json; charset=utf-8",
@@ -68,6 +55,14 @@ function readBody(req) {
 }
 
 function serveFile(req, res, targetPath) {
+  const mimeTypes = {
+    ".html": "text/html; charset=utf-8",
+    ".js": "application/javascript; charset=utf-8",
+    ".css": "text/css; charset=utf-8",
+    ".json": "application/json; charset=utf-8",
+    ".md": "text/markdown; charset=utf-8",
+  };
+
   const safePath = path.normalize(targetPath).replace(/^(\.\.[/\\])+/, "");
   const absolutePath = path.join(root, safePath);
 
@@ -85,6 +80,11 @@ function serveFile(req, res, targetPath) {
     res.end(data);
   });
 }
+
+loadDotEnv();
+
+const PORT = Number(process.env.PORT || 3000);
+const { apiKey: OPENAI_API_KEY, model: MODEL = DEFAULT_MODEL } = getOpenAiConfig();
 
 const server = http.createServer(async (req, res) => {
   if (req.method === "OPTIONS") {
