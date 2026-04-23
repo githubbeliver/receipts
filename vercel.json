@@ -1,31 +1,7 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
-  "builds": [
-    {
-      "src": "api/*.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
-    },
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 60
     }
-  ],
-  "routes": [
-    {
-      "src": "^/api/(.*)$",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "^/$",
-      "dest": "/public/index.html"
-    },
-    {
-      "src": "^/(.*)$",
-      "dest": "/public/$1"
-    }
-  ]
+  }
 }
