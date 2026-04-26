@@ -1,57 +1,32 @@
-# Receipts Submission Pack
+# Ghost Submission Pack
 
 ## One-line pitch
-
-Receipts turns messy proof of work into a polished, public-ready credibility profile.
+Ghost is a FaceTime-style AI call that watches your motion, listens to your mic texture, and reacts to your live presence in real time.
 
 ## Short description
+Ghost turns live camera motion, framing, microphone energy, and typing cadence into a one-on-one call with an AI presence. Instead of showing a cold dashboard, Ghost feels like something is on the other side of the call watching how you carry yourself, reacting to your energy, and speaking its read back to you.
 
-Most talented people are not underqualified. They are under-documented.
+## Why it stands out
+- It is instantly understandable because the format is familiar: a live call between you and an AI called Ghost.
+- It feels more alive than a typical AI analyzer because Ghost responds continuously as the signal changes.
+- It uses real mic and webcam input without pretending to do face recognition or identity detection.
+- The optional browser voice makes the AI feel present instead of purely visual.
 
-Receipts helps builders, creators, and operators turn scattered notes, screenshots, launch fragments, and quiet wins into a profile that is easier to hire, remember, and share. Paste raw evidence or upload a screenshot, and Receipts extracts the strongest signals, explains what it found, and generates a sharper headline, bio, portfolio bullets, post copy, and a shareable proof card.
+## 30-second spoken demo
+I built Ghost, a FaceTime-style AI call where the AI reads how you show up in real time. It watches your webcam motion and framing, listens to your mic texture, tracks typing cadence, and turns that into a live personality read. The point is not just analytics. The point is that it feels like something is on the other side of the call reacting to your energy while you talk.
 
-## Why this stands out
+## 60-second judge walkthrough
+1. Start the live call and allow mic and camera access.
+2. Speak naturally for a few seconds so Ghost starts shifting out of listening mode.
+3. Move closer to the camera or change your framing to show the read update.
+4. Type in the input box to spike cadence and make Ghost react again.
+5. Turn on Ghost voice so it speaks one of its reads out loud.
+6. Freeze the call once the read stabilizes and show the final captured state.
 
-- It solves a real problem: good people often struggle to present their work clearly.
-- It is multimodal: users can submit both text and screenshots.
-- It makes the AI legible: the app shows extracted evidence before presenting the polished output.
-- It creates an artifact: users can export markdown and a visual proof card.
+## Taglines
+- FaceTime with an AI that reads you back.
+- Ghost watches back.
+- Your presence, answered in real time.
 
-## Core features
-
-- Text-based receipt ingestion
-- Screenshot-based receipt ingestion
-- AI-powered rewriting into a stronger public narrative
-- Transparent evidence extraction panel
-- Shareable proof card export
-- Local fallback mode when live AI is unavailable
-
-## Demo script
-
-1. Start on the hero and say: "Receipts is for people whose best work exists in fragments instead of polished portfolios."
-2. Paste a messy project description into the input box.
-3. Upload a screenshot to show that visual proof can be understood too.
-4. Click generate and point out the evidence extraction panel first.
-5. Show how the app converts those cues into a headline, bio, bullets, and a launch-ready post.
-6. End on the downloadable proof card and say: "The goal is not just analysis. The goal is a usable artifact."
-
-## Best talking points
-
-- "Receipts does not invent credibility. It reveals it."
-- "I wanted the AI to show its reasoning path, not just spit out polished text."
-- "The product is designed around visibility: helping someone get noticed from the work they already did."
-- "A strong demo should leave the user with something they can actually use, not just admire."
-
-## Suggested challenge blurb
-
-I built Receipts to solve a problem I see everywhere: talented people doing meaningful work that never gets translated into a clear public story. The app takes raw text and screenshots, extracts the strongest evidence, and turns that into a polished credibility profile with transparent reasoning and exportable assets. It is designed to help under-documented talent become visible.
-
-## Suggested demo inputs
-
-### Input 1
-
-Built a campus event site in two weekends with two friends. Reworked the RSVP flow after people kept dropping off. Wrote the launch copy. Fixed a bug where confirmation emails never sent. Ended up with 1,200 students using it across three orgs. Everyone kept saying it finally felt easy to sign up for things.
-
-### Input 2
-
-Ran growth for a student-run newsletter. Tested three subject line styles, redesigned the signup page, and cleaned the publishing workflow so our team could ship twice a week without chaos. Grew from 400 to 2,300 subscribers in one semester and got inbound partnership requests from two campus groups.
+## Honest framing
+Ghost does not do face recognition, identity detection, or speech-to-text. It reads motion, framing, mic texture, and typing cadence, then turns those signals into a live reactive AI call.

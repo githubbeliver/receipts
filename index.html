@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ghost | AI Call</title>
+    <meta
+      name="description"
+      content="A FaceTime-style call between you and Ghost, with live voice, camera, and AI conversation."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">G</span>
+          <div>
+            <strong>Ghost</strong>
+            <span>AI video call</span>
+          </div>
+        </div>
+
+        <div class="status-group">
+          <span class="status-pill" id="scanStatus">call idle</span>
+          <span class="status-pill" id="aiBadge">api offline</span>
+          <span class="status-pill" id="inputBadge">mic offline</span>
+          <span class="status-pill" id="cameraBadge">camera offline</span>
+          <span class="status-pill" id="earsBadge">ears off</span>
+        </div>
+      </header>
+
+      <main class="call-shell">
+        <section class="call-stage">
+          <article class="call-card ghost-card">
+            <div class="card-top">
+              <span class="call-label">Ghost</span>
+              <span class="call-meta" id="conversationState">Waiting for you.</span>
+            </div>
+
+            <div class="ghost-screen" id="ghostScreen">
+              <div class="ghost-halo"></div>
+              <div class="ghost-face-wrap">
+                <div class="ghost-arms">
+                  <div class="ghost-arm arm-left">
+                    <div class="ghost-hand"></div>
+                  </div>
+                  <div class="ghost-arm arm-right">
+                    <div class="ghost-hand"></div>
+                  </div>
+                </div>
+                <div class="ghost-head">
+                  <div class="ghost-brow brow-left"></div>
+                  <div class="ghost-brow brow-right"></div>
+                  <div class="ghost-eye eye-left"></div>
+                  <div class="ghost-eye eye-right"></div>
+                  <div class="ghost-blush blush-left"></div>
+                  <div class="ghost-blush blush-right"></div>
+                  <div class="ghost-mouth"></div>
+                </div>
+              </div>
+
+              <div class="ghost-caption" id="ghostCaption" aria-live="polite"></div>
+              <div class="ghost-spectrum" id="spectrumBars" aria-hidden="true"></div>
+            </div>
+          </article>
+
+          <article class="call-card user-card">
+            <div class="card-top">
+              <span class="call-label">You</span>
+              <span class="call-meta" id="framingValue">Centered</span>
+            </div>
+
+            <div class="camera-frame">
+              <video id="cameraFeed" autoplay playsinline muted></video>
+              <div class="camera-overlay">
+                <span class="camera-line camera-line-h"></span>
+                <span class="camera-line camera-line-v"></span>
+                <span class="camera-corner corner-one"></span>
+                <span class="camera-corner corner-two"></span>
+                <span class="camera-corner corner-three"></span>
+                <span class="camera-corner corner-four"></span>
+              </div>
+              <div class="camera-fallback" id="cameraFallback">camera idle</div>
+            </div>
+          </article>
+        </section>
+
+        <section class="call-subtitles">
+          <article class="subtitle-card ghost-subtitle solo-subtitle">
+            <span class="call-label">Ghost</span>
+            <p id="latestGhostLine">Ghost will answer here.</p>
+          </article>
+        </section>
+
+        <section class="control-card">
+          <div class="card-top compact-top">
+            <span class="call-label">Call controls</span>
+            <span class="call-meta" id="composerNote">Ghost will answer when you speak or type.</span>
+          </div>
+          <div class="button-row">
+            <button class="primary-button" id="startButton" type="button">Start call</button>
+            <button class="secondary-button" id="demoButton" type="button">Demo mode</button>
+            <button class="secondary-button" id="stopButton" type="button">End call</button>
+            <button class="secondary-button" id="voiceToggle" type="button">Ghost voice off</button>
+            <button class="secondary-button" id="earsToggle" type="button">Ghost ears off</button>
+          </div>
+
+          <p class="panel-note" id="permissionNote">
+            Start the call to unlock mic and camera. Once the call is live,
+            Ghost should only answer when you actually speak or send a message.
+          </p>
+
+          <div class="composer">
+            <textarea
+              id="presenceInput"
+              placeholder="Type to Ghost here if you want a text-first conversation, or just talk out loud once Ghost ears are on."
+            ></textarea>
+            <button class="primary-button composer-send" id="sendButton" type="button">Send</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <canvas id="cameraCanvas" width="96" height="72" hidden></canvas>
+    <script src="./app.js"></script>
+  </body>
+</html>
